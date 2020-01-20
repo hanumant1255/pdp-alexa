@@ -25,6 +25,7 @@ public class GenericExceptionHandler implements ExceptionHandler {
         LOG.info("Error occured "+throwable.getMessage());
         return handlerInput.getResponseBuilder()
                 .withSpeech(Constants.ERROR)
+                .withShouldEndSession(false)
                 .build();
     }
 }

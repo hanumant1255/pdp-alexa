@@ -18,11 +18,11 @@ public class FallBackIntentHandler implements IntentRequestHandler{
 
 	 @Override
     public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {
-        String speechText = "Sorry, I don't know that. Would you like an PDP?";
+        String speechText = "Sorry, I don't know that. What would you like do in PDP?";
         return input.getResponseBuilder()
                 .withSpeech(speechText)
-                .withSimpleCard("Airplane Facts", speechText)
                 .withReprompt(speechText)
+                .withShouldEndSession(false)
                 .build();
     }
 

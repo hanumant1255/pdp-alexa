@@ -7,7 +7,7 @@ public class Constants {
     public static final String EMAIL_MISSING= "You can set your email at Amazon.com; under log-in and security.";
     public static final String NUMBER_MISSING= "You can set your phone number at Amazon.com; under log-in and security.";
     public static final String NAME_AVAILABLE= "Here is your full name: ";
-    public static final String EMAIL_AVAILABLE= " Here is your email address: ";
+    public static final String EMAIL_AVAILABLE= " Here is your logged in  email address: ";
     public static final String NUMBER_AVAILABLE= "Here is your phone number: ";
     public static final String ERROR= "Uh Oh. Looks like something went wrong.";
     public static final String API_FAILURE= "There was an error with the Alexa Customer Profile API. Please try again.";

@@ -22,6 +22,7 @@ public class CancelandStopIntentHandler implements IntentRequestHandler {
 	        return input.getResponseBuilder()
 	                .withSpeech(speechText)
 	                .withSimpleCard("PDP ", speechText)
+	                .withShouldEndSession(true)
 	                .build();
 	}
 }

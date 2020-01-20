@@ -34,17 +34,20 @@ public class LaunchHandler implements RequestHandler {
             if (email == null) {
                 return input.getResponseBuilder()
                         .withSpeech(Constants.EMAIL_MISSING)
+                        .withShouldEndSession(true)
                         .build();
             } else {
-                String speechText = "Welcome to PDP. How may I help you ";
+                String speechText = "Welcome to PDP. How may I help you.\n";
 
                 return input.getResponseBuilder()
                         .withSpeech(speechText + Constants.EMAIL_AVAILABLE + email)
+                        .withShouldEndSession(false)
                         .build();
             }
         } else {
             return input.getResponseBuilder()
                     .withSpeech(Constants.NOTIFY_MISSING_PERMISSIONS)
+                    .withShouldEndSession(true)
                     .withAskForPermissionsConsentCard(Arrays.asList(Constants.NAME_PERMISSION, Constants.EMAIL_PERMISSION, Constants.MOBILE_NUMBER_PERMISSION))
                     .build();
         }

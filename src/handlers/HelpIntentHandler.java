@@ -18,11 +18,11 @@ public class HelpIntentHandler implements IntentRequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {
-        String speechText = "I can tell you about PDP. Try saying tell about PDP";
+        String speechText = "I can tell you about PDP. Try saying tell me about PDP";
         return input.getResponseBuilder()
                 .withSpeech(speechText)
-                .withSimpleCard("Airplane Facts", speechText)
                 .withReprompt(speechText)
+                .withShouldEndSession(false)
                 .build();
     }
 

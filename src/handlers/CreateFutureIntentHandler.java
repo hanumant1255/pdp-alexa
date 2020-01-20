@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -52,9 +53,13 @@ public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest
 	    RestTemplate restTemplate = new RestTemplate();
 	    
 	    ResponseEntity<String> rs=restTemplate.exchange(url, HttpMethod.POST,request, String.class);
-			
+	    String speech="Error while creating "+branchName +" branch for "+featureName;
+		if(rs.getStatusCode()==HttpStatus.ACCEPTED) {
+		     speech="Successfully  created "+branchName +" branch for "+featureName;
+		}
 	    return input.getResponseBuilder()
-                .withSpeech(rs.getBody())
+                .withSpeech(speech)
+                .withShouldEndSession(false)
                 .build();
 	}
 

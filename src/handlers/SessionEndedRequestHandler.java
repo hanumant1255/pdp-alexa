@@ -1,4 +1,5 @@
 package handlers;
+import static com.amazon.ask.request.Predicates.intentName;
 import static com.amazon.ask.request.Predicates.requestType;
 
 import java.util.Optional;
@@ -15,15 +16,16 @@ public class SessionEndedRequestHandler implements IntentRequestHandler {
 
     
     public boolean canHandle(HandlerInput input, IntentRequest intentRequest) {
-        return input.matches(requestType(SessionEndedRequest.class));
+        return input.matches(requestType(SessionEndedRequest.class).or(intentName("exitIntent")));
     }
 
     
     public Optional<Response> handle(HandlerInput input, IntentRequest intentRequest) {
         RequestEnvelope envelope = input.getRequestEnvelope();
                 envelope.getSession().getSessionId();
+                String speechText="Thank you for using PDP. You are successfully logged out from PDP";
         // any cleanup logic goes here
-        return input.getResponseBuilder().build();
+        return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(true).build();
     }
 
 }
